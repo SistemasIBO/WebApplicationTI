@@ -1,0 +1,81 @@
+﻿@model IEnumerable<WebApplicationTI.Models.Consumibles>
+
+@{
+    ViewBag.Title = "Consumibles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid">
+            <p>
+                @Html.ActionLink("Agregar", "Create", "", new { @class = "btn btn-success" })
+            </p>
+            <table class="table table-secondary  table-hover border-primary">
+                <thead class="table-dark">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Producto)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Descripcion)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Precio)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Cantidad)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FechaCompra)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Observaciones)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Proveedor.RazonSocial)
+                        </th>
+                        <th class="text-center">Operaciones</th>
+                    </tr>
+                </thead>
+
+
+                @foreach (var item in Model)
+                {
+                    <tr >
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Producto)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Descripcion)
+                        </td>
+                        <td>
+                            <div class="input-group mb-3">
+                                <span>$</span>
+                                @Html.DisplayFor(modelItem => item.Precio)
+                            </div>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cantidad)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FechaCompra)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Observaciones)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Proveedor.RazonSocial)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Editar", "Edit", new { id = item.IdConsumible }, new { @class = "btn btn-outline-primary" })
+                            @Html.ActionLink("Detalle", "Details", new { id = item.IdConsumible }, new { @class = "btn btn-outline-info" })
+                            @Html.ActionLink("Eliminar", "Delete", new { id = item.IdConsumible }, new { @class = "btn btn-outline-danger" })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </main>
+</div>

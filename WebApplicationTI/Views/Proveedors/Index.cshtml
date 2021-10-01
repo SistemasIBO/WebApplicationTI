@@ -1,0 +1,72 @@
+﻿@model IEnumerable<WebApplicationTI.Models.Proveedor>
+
+@{
+    ViewBag.Title = "Proveedores";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid">
+            <p>
+                @Html.ActionLink("Agregar", "Create", "", new { @class = "btn btn-primary" })
+            </p>
+            <table class="table table-secondary  table-hover border-primary">
+                <thead class="table-dark">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.RazonSocial)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.RFC)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Direccion)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Telefono)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Correo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Observaciones)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RazonSocial)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RFC)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Direccion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Telefono)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Correo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Observaciones)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Editar", "Edit", new { id = item.IdProveedor }, new { @class = "btn btn-outline-primary" })
+                            @Html.ActionLink("Detalle", "Details", new { id = item.IdProveedor }, new { @class = "btn btn-outline-info" })
+                            @Html.ActionLink("Eliminar", "Delete", new { id = item.IdProveedor }, new { @class = "btn btn-outline-danger" })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </main>
+</div>

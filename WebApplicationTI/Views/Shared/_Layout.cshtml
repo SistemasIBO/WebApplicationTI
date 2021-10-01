@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="~/Img/logoimbolsa.png">
+    <title>Imbolsa</title>
+
+    <link href="~/Style/style.css" rel="stylesheet" />
+    <script src="~/Scripts/ControllerScripts.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-bs4/1.10.24/dataTables.bootstrap4.css" rel="stylesheet" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-primary">
+        <a class="navbar-brand" href="~/Home/Index">IMBOLSA</a>
+        <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="~/Usuarios/Index">Usuarios</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="~/Proveedors/Index">Proveedores</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link active" href="~/Deptos/Index">Deptos</a>
+                </li>
+            </ul>
+            <h6 style="color: white">Bienvenido: @Session["Nombre"].ToString()</h6>
+        </div>
+
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-primary" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Equipos de computo</div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePC" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-desktop"></i></div>
+                            Equipos
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePC" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="~/EquiposComputo/Index">Computadoras</a>
+                                <a class="nav-link" href="~/Monitors/Index">Monitores</a>
+                            </nav>
+                        </div>
+                        <div class="sb-sidenav-menu-heading">Impresoras</div>
+                        <a class="nav-link" href="~/Impresoras/Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-print"></i></div>
+                            Impresoras
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Circuito cerrado</div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCCTV" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-video"></i></div>
+                            CCTV
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseCCTV" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="~/DVRs/Index">DVRs</a>
+                                <a class="nav-link" href="~/Camaras/Index">Cámaras</a>
+                            </nav>
+                        </div>
+                        <div class="sb-sidenav-menu-heading">Redes</div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRED" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-desktop"></i></div>
+                            Red
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseRED" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="~/Routers/Index">Routers</a>
+                                <a class="nav-link" href="~/Switches/Index">Switches</a>
+                            </nav>
+                        </div>
+                        <div class="sb-sidenav-menu-heading">Herramientas</div>
+                        <a class="nav-link" href="~/Herramientas/Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tools"></i></div>
+                            Herramientas
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Consumibles</div>
+                        <a class="nav-link" href="~/Consumibles/Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-clipboard-list"></i></div>
+                            Consumibles
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Dispositivos</div>
+                        <a class="nav-link" href="~/Dispositivos/Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-bars"></i></div>
+                            Dispositivos
+                        </a>
+                    </div>
+                </div>
+                <div class="sb-sidenav-footer active">                    
+                    <div class="small">
+                        <a class="btn btn-light" href="@Url.Action("Salir","Login")">
+                            Salir <i class="fas fa-sign-out-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="container body-content">
+            @RenderBody()
+        </div>
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="~/Scripts/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+</body>
+</html>

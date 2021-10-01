@@ -1,0 +1,90 @@
+﻿@model IEnumerable<WebApplicationTI.Models.Impresoras>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid">
+            <p>
+                @Html.ActionLink("Agregar", "Create","", new { @class = "btn btn-success" })
+            </p>
+            <table class="table table-secondary table-hover border-primary">
+                <thead class="table-dark">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Tipo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Marcar)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Modelo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Arrendamiento)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PuertoEthetnet)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PuertoUSB)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Estado)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Observaciones)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Depto.Departamento)
+                        </th>
+                        <th class="text-center">Operaciones</th>
+                    </tr>
+                </thead>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Tipo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Marcar)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Modelo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Arrendamiento)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PuertoEthetnet)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PuertoUSB)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Estado)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Observaciones)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Depto.Departamento)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Editar", "Edit", new { id = item.IdEquipoImpresora }, new { @class = "btn btn-outline-primary" })
+                                @Html.ActionLink("Detalle", "Details", new { id = item.IdEquipoImpresora }, new { @class = "btn btn-outline-info" })
+                                @Html.ActionLink("Eliminar", "Delete", new { id = item.IdEquipoImpresora }, new { @class = "btn btn-outline-danger" })
+                            </td>
+                        </tr>
+                    }
+
+            </table>
+        </div>
+    </main>
+</div>

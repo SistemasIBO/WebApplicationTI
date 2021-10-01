@@ -1,0 +1,76 @@
+﻿@model WebApplicationTI.Models.Cuenta
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Yinka Enoch Adedokun">
+    <title>Login Page</title>
+
+
+    <link href="~/Style/StyleSheet1.css" rel="stylesheet" />
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <div id="login-container">
+        @using (Html.BeginForm("Validar", "Login", FormMethod.Post))
+        {
+            <h3>Iniciar sesión</h3>
+            <hr>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <form>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="email-label">
+                                        <i class="fa fa-user-circle" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                                @Html.EditorFor(model => model.Usuario, new { htmlAttributes = new { @class = "form-control", placeholder = "Usuario",@id="user" } })
+                                @Html.ValidationMessageFor(model => model.Usuario, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="password-label">
+                                        <i class="fa fa-key" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                                @Html.EditorFor(model => model.Contrasenia, new { htmlAttributes = new { @class = "form-control", placeholder = "Contraseña",@id="pass" } })
+                                @Html.ValidationMessageFor(model => model.Contrasenia, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                <label class="text-light">@Html.ValidationMessage("cuenta")</label>
+                            </div>
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-customized">Entrar</button>
+                                <button type="button" class="btn btn-customized" id="btnlim">LImpiar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <script type="text/javascript">
+        $('#btnlim').on('click', function (event) {
+            $('#user').val("");
+            $('#pass').val("");
+        });
+    </script>
+</body>
+</html>

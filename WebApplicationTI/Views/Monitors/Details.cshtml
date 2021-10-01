@@ -1,0 +1,90 @@
+﻿@model WebApplicationTI.Models.Monitor
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <br />
+    <h4>Detalle monitor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Marca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Marca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modelo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modelo)
+        </dd>
+
+        <dt>
+            No. Serie
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoSerie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pulgada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pulgada)
+        </dd>
+
+        <dt>
+            Puerto VGA
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoPuertoVGA)
+        </dd>
+
+        <dt>
+            Puerto HDMI
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoPuertoHDMI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observaciones)
+        </dd>
+
+        <dt>
+            Tipo equipo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EquipoComputo.TipoDeEquipo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.IdMonitor }, new { @class = "btn btn-warning" })
+    @Html.ActionLink("Volver", "Index", "", new { @class = "btn btn-primary" })
+</p>

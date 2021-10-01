@@ -1,0 +1,38 @@
+﻿@model WebApplicationTI.Models.Usuario
+
+<script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
+
+
+@using (Html.BeginForm("Edit", "Usuarios", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="modal-header border-bottom-0">
+        <h3 class="modal-title">Editar usuario</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <hr />
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.IdUsuario)
+    <div class="modal-body mx-3">
+
+        @Html.LabelFor(model => model.Depto.Departamento, new { @class = "control-label" })
+        @Html.DropDownListFor(model => model.IdDepto, null, new { @class = "form-control" })
+
+        @Html.LabelFor(model => model.Nombre, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Nombre)
+
+        @Html.LabelFor(model => model.Correo, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.Correo, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Correo)
+
+        @Html.LabelFor(model => model.Ext, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.Ext, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Ext)
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </div>
+}

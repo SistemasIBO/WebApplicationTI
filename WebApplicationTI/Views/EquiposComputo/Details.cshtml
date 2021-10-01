@@ -1,0 +1,90 @@
+﻿@model WebApplicationTI.Models.EquipoComputo
+
+@{
+    ViewBag.Title = "Detalle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <br />
+    <h4>Detalle de equipo de computo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            Usuario
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario.Nombre)
+        </dd>
+
+        <dt>
+            Tipo de equipo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoDeEquipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Marca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Marca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modelo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modelo)
+        </dd>
+
+        <dt>
+            No. Serie
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoSerie)
+        </dd>
+
+        <dt>
+            Disco duro
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CapidadDiscoDuro)
+        </dd>
+
+        <dt>
+            Memoria RAM
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MemoriaRAM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observaciones)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.IdEquipoComputo }, new { @class = "btn btn-warning" })
+    @Html.ActionLink("Volver", "Index", "", new { @class = "btn btn-primary" })
+</p>

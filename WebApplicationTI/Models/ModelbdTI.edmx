@@ -1,0 +1,798 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="bdTIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Camaras">
+          <Key>
+            <PropertyRef Name="IdCamara" />
+          </Key>
+          <Property Name="IdCamara" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Marca" Type="nvarchar" MaxLength="50" />
+          <Property Name="Modelo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ubicacion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NoSerie" Type="nvarchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="Consumibles">
+          <Key>
+            <PropertyRef Name="IdConsumible" />
+          </Key>
+          <Property Name="IdConsumible" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdProveedor" Type="int" />
+          <Property Name="Producto" Type="nvarchar" MaxLength="50" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="100" />
+          <Property Name="Precio" Type="float" />
+          <Property Name="Cantidad" Type="int" />
+          <Property Name="FechaCompra" Type="datetime" />
+          <Property Name="Observaciones" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Cuenta">
+          <Key>
+            <PropertyRef Name="IdCuenta" />
+          </Key>
+          <Property Name="IdCuenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Usuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Contrasenia" Type="nvarchar" MaxLength="8" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Depto">
+          <Key>
+            <PropertyRef Name="IdDepto" />
+          </Key>
+          <Property Name="IdDepto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Departamento" Type="nvarchar" MaxLength="50" />
+          <Property Name="JefeDelDpto" Type="nvarchar" MaxLength="50" />
+          <Property Name="Observaciones" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Dispositivos">
+          <Key>
+            <PropertyRef Name="IdDispositivo" />
+          </Key>
+          <Property Name="IdDispositivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Producto" Type="nvarchar" MaxLength="50" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="100" />
+          <Property Name="Marca" Type="nvarchar" MaxLength="50" />
+          <Property Name="Modelo" Type="nvarchar" MaxLength="50" />
+          <Property Name="NoSerie" Type="nvarchar" MaxLength="50" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" />
+          <Property Name="Observaciones" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="DVR">
+          <Key>
+            <PropertyRef Name="IdDVR" />
+          </Key>
+          <Property Name="IdDVR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Marca" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Modelo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NoSerie" Type="nvarchar" MaxLength="50" />
+          <Property Name="PuertoUSB" Type="int" />
+          <Property Name="NoCamaras" Type="int" />
+          <Property Name="PuertoVGA" Type="int" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="30" />
+          <Property Name="Observaciones" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="EquipoComputo">
+          <Key>
+            <PropertyRef Name="IdEquipoComputo" />
+          </Key>
+          <Property Name="IdEquipoComputo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="TipoDeEquipo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Marca" Type="nvarchar" MaxLength="50" />
+          <Property Name="Modelo" Type="nvarchar" MaxLength="50" />
+          <Property Name="NoSerie" Type="nvarchar" MaxLength="50" />
+          <Property Name="CapidadDiscoDuro" Type="nvarchar" MaxLength="50" />
+          <Property Name="MemoriaRAM" Type="nvarchar" MaxLength="30" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" />
+          <Property Name="Observaciones" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Herramienta">
+          <Key>
+            <PropertyRef Name="IdHerramienta" />
+          </Key>
+          <Property Name="IdHerramienta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Producto" Type="nvarchar" MaxLength="50" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="100" />
+          <Property Name="Observaciones" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Impresoras">
+          <Key>
+            <PropertyRef Name="IdEquipoImpresora" />
+          </Key>
+          <Property Name="IdEquipoImpresora" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdDepto" Type="int" Nullable="false" />
+          <Property Name="Tipo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Marcar" Type="nvarchar" MaxLength="50" />
+          <Property Name="Modelo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Arrendamiento" Type="nvarchar" MaxLength="4" />
+          <Property Name="PuertoEthetnet" Type="tinyint" />
+          <Property Name="PuertoUSB" Type="tinyint" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" />
+          <Property Name="Observaciones" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Monitor">
+          <Key>
+            <PropertyRef Name="IdMonitor" />
+          </Key>
+          <Property Name="IdMonitor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdEquipoComputo" Type="int" />
+          <Property Name="Marca" Type="nvarchar" MaxLength="50" />
+          <Property Name="Modelo" Type="nvarchar" MaxLength="50" />
+          <Property Name="NoSerie" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pulgada" Type="nvarchar" MaxLength="50" />
+          <Property Name="NoPuertoVGA" Type="nvarchar" MaxLength="5" />
+          <Property Name="NoPuertoHDMI" Type="nvarchar" MaxLength="5" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" />
+          <Property Name="Observaciones" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Proveedor">
+          <Key>
+            <PropertyRef Name="IdProveedor" />
+          </Key>
+          <Property Name="IdProveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RazonSocial" Type="nvarchar" MaxLength="100" />
+          <Property Name="RFC" Type="nvarchar" MaxLength="15" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="100" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="15" />
+          <Property Name="Correo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Observaciones" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Router">
+          <Key>
+            <PropertyRef Name="IdRouter" />
+          </Key>
+          <Property Name="IdRouter" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Marca" Type="nvarchar" MaxLength="50" />
+          <Property Name="Modelo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Serie" Type="nvarchar" MaxLength="50" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="30" />
+          <Property Name="Observaciones" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Switch">
+          <Key>
+            <PropertyRef Name="IdSwitch" />
+          </Key>
+          <Property Name="IdSwitch" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdDepto" Type="int" />
+          <Property Name="Marca" Type="nvarchar" MaxLength="50" />
+          <Property Name="Modelo" Type="nvarchar" MaxLength="50" />
+          <Property Name="NoSerie" Type="nvarchar" MaxLength="50" />
+          <Property Name="NoPuertoEthernet" Type="int" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="30" />
+          <Property Name="Observaciones" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdDepto" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Correo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ext" Type="nvarchar" MaxLength="4" />
+        </EntityType>
+        <Association Name="FK_Consumibles_Proveedor">
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="0..1" />
+          <End Role="Consumibles" Type="Self.Consumibles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="IdProveedor" />
+            </Principal>
+            <Dependent Role="Consumibles">
+              <PropertyRef Name="IdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipoComputo_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="EquipoComputo" Type="Self.EquipoComputo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="EquipoComputo">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Impresoras_Depto">
+          <End Role="Depto" Type="Self.Depto" Multiplicity="1" />
+          <End Role="Impresoras" Type="Self.Impresoras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Depto">
+              <PropertyRef Name="IdDepto" />
+            </Principal>
+            <Dependent Role="Impresoras">
+              <PropertyRef Name="IdDepto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Monitor_EquipoComputo">
+          <End Role="EquipoComputo" Type="Self.EquipoComputo" Multiplicity="0..1" />
+          <End Role="Monitor" Type="Self.Monitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EquipoComputo">
+              <PropertyRef Name="IdEquipoComputo" />
+            </Principal>
+            <Dependent Role="Monitor">
+              <PropertyRef Name="IdEquipoComputo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Switch_Depto">
+          <End Role="Depto" Type="Self.Depto" Multiplicity="0..1" />
+          <End Role="Switch" Type="Self.Switch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Depto">
+              <PropertyRef Name="IdDepto" />
+            </Principal>
+            <Dependent Role="Switch">
+              <PropertyRef Name="IdDepto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Depto">
+          <End Role="Depto" Type="Self.Depto" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Depto">
+              <PropertyRef Name="IdDepto" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="IdDepto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="bdTIModelStoreContainer">
+          <EntitySet Name="Camaras" EntityType="Self.Camaras" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Consumibles" EntityType="Self.Consumibles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cuenta" EntityType="Self.Cuenta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Depto" EntityType="Self.Depto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dispositivos" EntityType="Self.Dispositivos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DVR" EntityType="Self.DVR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EquipoComputo" EntityType="Self.EquipoComputo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Herramienta" EntityType="Self.Herramienta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Impresoras" EntityType="Self.Impresoras" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Monitor" EntityType="Self.Monitor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proveedor" EntityType="Self.Proveedor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Router" EntityType="Self.Router" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Switch" EntityType="Self.Switch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Consumibles_Proveedor" Association="Self.FK_Consumibles_Proveedor">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="Consumibles" EntitySet="Consumibles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipoComputo_Usuario" Association="Self.FK_EquipoComputo_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="EquipoComputo" EntitySet="EquipoComputo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Impresoras_Depto" Association="Self.FK_Impresoras_Depto">
+            <End Role="Depto" EntitySet="Depto" />
+            <End Role="Impresoras" EntitySet="Impresoras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Monitor_EquipoComputo" Association="Self.FK_Monitor_EquipoComputo">
+            <End Role="EquipoComputo" EntitySet="EquipoComputo" />
+            <End Role="Monitor" EntitySet="Monitor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Switch_Depto" Association="Self.FK_Switch_Depto">
+            <End Role="Depto" EntitySet="Depto" />
+            <End Role="Switch" EntitySet="Switch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Depto" Association="Self.FK_Usuario_Depto">
+            <End Role="Depto" EntitySet="Depto" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="bdTIModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Depto">
+          <Key>
+            <PropertyRef Name="IdDepto" />
+          </Key>
+          <Property Name="IdDepto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Departamento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JefeDelDpto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Observaciones" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Impresoras" Relationship="Self.FK_Impresoras_Depto" FromRole="Depto" ToRole="Impresoras" />
+          <NavigationProperty Name="Switch" Relationship="Self.FK_Switch_Depto" FromRole="Depto" ToRole="Switch" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuario_Depto" FromRole="Depto" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Dispositivos">
+          <Key>
+            <PropertyRef Name="IdDispositivo" />
+          </Key>
+          <Property Name="IdDispositivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Producto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Modelo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NoSerie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Observaciones" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DVR">
+          <Key>
+            <PropertyRef Name="IdDVR" />
+          </Key>
+          <Property Name="IdDVR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Modelo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NoSerie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PuertoUSB" Type="Int32" />
+          <Property Name="NoCamaras" Type="Int32" />
+          <Property Name="PuertoVGA" Type="Int32" />
+          <Property Name="Estado" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Observaciones" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Herramienta">
+          <Key>
+            <PropertyRef Name="IdHerramienta" />
+          </Key>
+          <Property Name="IdHerramienta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Producto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Observaciones" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Impresoras">
+          <Key>
+            <PropertyRef Name="IdEquipoImpresora" />
+          </Key>
+          <Property Name="IdEquipoImpresora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdDepto" Type="Int32" Nullable="false" />
+          <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Marcar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Modelo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Arrendamiento" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="PuertoEthetnet" Type="Byte" />
+          <Property Name="PuertoUSB" Type="Byte" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Observaciones" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Depto" Relationship="Self.FK_Impresoras_Depto" FromRole="Impresoras" ToRole="Depto" />
+        </EntityType>
+        <EntityType Name="Proveedor">
+          <Key>
+            <PropertyRef Name="IdProveedor" />
+          </Key>
+          <Property Name="IdProveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RazonSocial" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RFC" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Observaciones" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Consumibles" Relationship="bdTIModel.FK_Consumibles_Proveedor" FromRole="Proveedor" ToRole="Consumibles" />
+        </EntityType>
+        <EntityType Name="Router">
+          <Key>
+            <PropertyRef Name="IdRouter" />
+          </Key>
+          <Property Name="IdRouter" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Modelo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Serie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Observaciones" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Switch">
+          <Key>
+            <PropertyRef Name="IdSwitch" />
+          </Key>
+          <Property Name="IdSwitch" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdDepto" Type="Int32" />
+          <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Modelo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NoSerie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NoPuertoEthernet" Type="Int32" />
+          <Property Name="Estado" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Observaciones" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Depto" Relationship="Self.FK_Switch_Depto" FromRole="Switch" ToRole="Depto" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdDepto" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ext" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Depto" Relationship="Self.FK_Usuario_Depto" FromRole="Usuario" ToRole="Depto" />
+          <NavigationProperty Name="EquipoComputo" Relationship="bdTIModel.FK_EquipoComputo_Usuario" FromRole="Usuario" ToRole="EquipoComputo" />
+        </EntityType>
+        <Association Name="FK_Impresoras_Depto">
+          <End Role="Depto" Type="Self.Depto" Multiplicity="1" />
+          <End Role="Impresoras" Type="Self.Impresoras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Depto">
+              <PropertyRef Name="IdDepto" />
+            </Principal>
+            <Dependent Role="Impresoras">
+              <PropertyRef Name="IdDepto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Switch_Depto">
+          <End Role="Depto" Type="Self.Depto" Multiplicity="0..1" />
+          <End Role="Switch" Type="Self.Switch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Depto">
+              <PropertyRef Name="IdDepto" />
+            </Principal>
+            <Dependent Role="Switch">
+              <PropertyRef Name="IdDepto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Depto">
+          <End Role="Depto" Type="Self.Depto" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Depto">
+              <PropertyRef Name="IdDepto" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="IdDepto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="bdTIEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Depto" EntityType="Self.Depto" />
+          <EntitySet Name="Dispositivos" EntityType="Self.Dispositivos" />
+          <EntitySet Name="DVR" EntityType="Self.DVR" />
+          <EntitySet Name="Herramienta" EntityType="Self.Herramienta" />
+          <EntitySet Name="Impresoras" EntityType="Self.Impresoras" />
+          <EntitySet Name="Proveedor" EntityType="Self.Proveedor" />
+          <EntitySet Name="Router" EntityType="Self.Router" />
+          <EntitySet Name="Switch" EntityType="Self.Switch" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK_Impresoras_Depto" Association="Self.FK_Impresoras_Depto">
+            <End Role="Depto" EntitySet="Depto" />
+            <End Role="Impresoras" EntitySet="Impresoras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Switch_Depto" Association="Self.FK_Switch_Depto">
+            <End Role="Depto" EntitySet="Depto" />
+            <End Role="Switch" EntitySet="Switch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Depto" Association="Self.FK_Usuario_Depto">
+            <End Role="Depto" EntitySet="Depto" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <EntitySet Name="EquipoComputo" EntityType="bdTIModel.EquipoComputo" />
+          <EntitySet Name="Monitor" EntityType="bdTIModel.Monitor" />
+          <AssociationSet Name="FK_EquipoComputo_Usuario" Association="bdTIModel.FK_EquipoComputo_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="EquipoComputo" EntitySet="EquipoComputo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Monitor_EquipoComputo" Association="bdTIModel.FK_Monitor_EquipoComputo">
+            <End Role="EquipoComputo" EntitySet="EquipoComputo" />
+            <End Role="Monitor" EntitySet="Monitor" />
+          </AssociationSet>
+          <EntitySet Name="Consumibles" EntityType="bdTIModel.Consumibles" />
+          <AssociationSet Name="FK_Consumibles_Proveedor" Association="bdTIModel.FK_Consumibles_Proveedor">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="Consumibles" EntitySet="Consumibles" />
+          </AssociationSet>
+          <EntitySet Name="Cuenta" EntityType="bdTIModel.Cuenta" />
+          <EntitySet Name="Camaras" EntityType="bdTIModel.Camaras" />
+          </EntityContainer>
+        <EntityType Name="EquipoComputo">
+          <Key>
+            <PropertyRef Name="IdEquipoComputo" />
+          </Key>
+          <Property Name="IdEquipoComputo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="TipoDeEquipo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Modelo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NoSerie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CapidadDiscoDuro" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MemoriaRAM" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Observaciones" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Usuario" Relationship="bdTIModel.FK_EquipoComputo_Usuario" FromRole="EquipoComputo" ToRole="Usuario" />
+          <NavigationProperty Name="Monitor" Relationship="bdTIModel.FK_Monitor_EquipoComputo" FromRole="EquipoComputo" ToRole="Monitor" />
+        </EntityType>
+        <EntityType Name="Monitor">
+          <Key>
+            <PropertyRef Name="IdMonitor" />
+          </Key>
+          <Property Name="IdMonitor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdEquipoComputo" Type="Int32" />
+          <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Modelo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NoSerie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pulgada" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NoPuertoVGA" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="NoPuertoHDMI" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Observaciones" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EquipoComputo" Relationship="bdTIModel.FK_Monitor_EquipoComputo" FromRole="Monitor" ToRole="EquipoComputo" />
+        </EntityType>
+        <Association Name="FK_EquipoComputo_Usuario">
+          <End Type="bdTIModel.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="bdTIModel.EquipoComputo" Role="EquipoComputo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="EquipoComputo">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Monitor_EquipoComputo">
+          <End Type="bdTIModel.EquipoComputo" Role="EquipoComputo" Multiplicity="0..1" />
+          <End Type="bdTIModel.Monitor" Role="Monitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EquipoComputo">
+              <PropertyRef Name="IdEquipoComputo" />
+            </Principal>
+            <Dependent Role="Monitor">
+              <PropertyRef Name="IdEquipoComputo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Consumibles">
+          <Key>
+            <PropertyRef Name="IdConsumible" />
+          </Key>
+          <Property Name="IdConsumible" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProveedor" Type="Int32" />
+          <Property Name="Producto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Precio" Type="Double" />
+          <Property Name="Cantidad" Type="Int32" />
+          <Property Name="FechaCompra" Type="DateTime" Precision="3" />
+          <Property Name="Observaciones" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Proveedor" Relationship="bdTIModel.FK_Consumibles_Proveedor" FromRole="Consumibles" ToRole="Proveedor" />
+        </EntityType>
+        <Association Name="FK_Consumibles_Proveedor">
+          <End Type="bdTIModel.Proveedor" Role="Proveedor" Multiplicity="0..1" />
+          <End Type="bdTIModel.Consumibles" Role="Consumibles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="IdProveedor" />
+            </Principal>
+            <Dependent Role="Consumibles">
+              <PropertyRef Name="IdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Cuenta">
+          <Key>
+            <PropertyRef Name="IdCuenta" />
+          </Key>
+          <Property Name="IdCuenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contrasenia" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Camaras">
+          <Key>
+            <PropertyRef Name="IdCamara" />
+          </Key>
+          <Property Name="IdCamara" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Modelo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ubicacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NoSerie" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="bdTIModelStoreContainer" CdmEntityContainer="bdTIEntities">
+          <EntitySetMapping Name="Depto">
+            <EntityTypeMapping TypeName="bdTIModel.Depto">
+              <MappingFragment StoreEntitySet="Depto">
+                <ScalarProperty Name="IdDepto" ColumnName="IdDepto" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="JefeDelDpto" ColumnName="JefeDelDpto" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dispositivos">
+            <EntityTypeMapping TypeName="bdTIModel.Dispositivos">
+              <MappingFragment StoreEntitySet="Dispositivos">
+                <ScalarProperty Name="IdDispositivo" ColumnName="IdDispositivo" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="NoSerie" ColumnName="NoSerie" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DVR">
+            <EntityTypeMapping TypeName="bdTIModel.DVR">
+              <MappingFragment StoreEntitySet="DVR">
+                <ScalarProperty Name="IdDVR" ColumnName="IdDVR" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="NoSerie" ColumnName="NoSerie" />
+                <ScalarProperty Name="PuertoUSB" ColumnName="PuertoUSB" />
+                <ScalarProperty Name="NoCamaras" ColumnName="NoCamaras" />
+                <ScalarProperty Name="PuertoVGA" ColumnName="PuertoVGA" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Herramienta">
+            <EntityTypeMapping TypeName="bdTIModel.Herramienta">
+              <MappingFragment StoreEntitySet="Herramienta">
+                <ScalarProperty Name="IdHerramienta" ColumnName="IdHerramienta" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Impresoras">
+            <EntityTypeMapping TypeName="bdTIModel.Impresoras">
+              <MappingFragment StoreEntitySet="Impresoras">
+                <ScalarProperty Name="IdEquipoImpresora" ColumnName="IdEquipoImpresora" />
+                <ScalarProperty Name="IdDepto" ColumnName="IdDepto" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Marcar" ColumnName="Marcar" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="Arrendamiento" ColumnName="Arrendamiento" />
+                <ScalarProperty Name="PuertoEthetnet" ColumnName="PuertoEthetnet" />
+                <ScalarProperty Name="PuertoUSB" ColumnName="PuertoUSB" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proveedor">
+            <EntityTypeMapping TypeName="bdTIModel.Proveedor">
+              <MappingFragment StoreEntitySet="Proveedor">
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+                <ScalarProperty Name="RFC" ColumnName="RFC" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Router">
+            <EntityTypeMapping TypeName="bdTIModel.Router">
+              <MappingFragment StoreEntitySet="Router">
+                <ScalarProperty Name="IdRouter" ColumnName="IdRouter" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="Serie" ColumnName="Serie" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Switch">
+            <EntityTypeMapping TypeName="bdTIModel.Switch">
+              <MappingFragment StoreEntitySet="Switch">
+                <ScalarProperty Name="IdSwitch" ColumnName="IdSwitch" />
+                <ScalarProperty Name="IdDepto" ColumnName="IdDepto" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="NoSerie" ColumnName="NoSerie" />
+                <ScalarProperty Name="NoPuertoEthernet" ColumnName="NoPuertoEthernet" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="bdTIModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdDepto" ColumnName="IdDepto" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Ext" ColumnName="Ext" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EquipoComputo">
+            <EntityTypeMapping TypeName="bdTIModel.EquipoComputo">
+              <MappingFragment StoreEntitySet="EquipoComputo">
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="MemoriaRAM" ColumnName="MemoriaRAM" />
+                <ScalarProperty Name="CapidadDiscoDuro" ColumnName="CapidadDiscoDuro" />
+                <ScalarProperty Name="NoSerie" ColumnName="NoSerie" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="TipoDeEquipo" ColumnName="TipoDeEquipo" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdEquipoComputo" ColumnName="IdEquipoComputo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Monitor">
+            <EntityTypeMapping TypeName="bdTIModel.Monitor">
+              <MappingFragment StoreEntitySet="Monitor">
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="NoPuertoHDMI" ColumnName="NoPuertoHDMI" />
+                <ScalarProperty Name="NoPuertoVGA" ColumnName="NoPuertoVGA" />
+                <ScalarProperty Name="Pulgada" ColumnName="Pulgada" />
+                <ScalarProperty Name="NoSerie" ColumnName="NoSerie" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="IdEquipoComputo" ColumnName="IdEquipoComputo" />
+                <ScalarProperty Name="IdMonitor" ColumnName="IdMonitor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Consumibles">
+            <EntityTypeMapping TypeName="bdTIModel.Consumibles">
+              <MappingFragment StoreEntitySet="Consumibles">
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="FechaCompra" ColumnName="FechaCompra" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+                <ScalarProperty Name="IdConsumible" ColumnName="IdConsumible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cuenta">
+            <EntityTypeMapping TypeName="bdTIModel.Cuenta">
+              <MappingFragment StoreEntitySet="Cuenta">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Contrasenia" ColumnName="Contrasenia" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="IdCuenta" ColumnName="IdCuenta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Camaras">
+            <EntityTypeMapping TypeName="bdTIModel.Camaras">
+              <MappingFragment StoreEntitySet="Camaras">
+                <ScalarProperty Name="NoSerie" ColumnName="NoSerie" />
+                <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="IdCamara" ColumnName="IdCamara" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,95 @@
+﻿@model WebApplicationTI.Models.Monitor
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <br />
+    <h4>Eliminar monitor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Marca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Marca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modelo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modelo)
+        </dd>
+
+        <dt>
+            No. Serie
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoSerie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pulgada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pulgada)
+        </dd>
+
+        <dt>
+            Puerto VGA
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoPuertoVGA)
+        </dd>
+
+        <dt>
+            Puerto HDMI
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoPuertoHDMI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observaciones)
+        </dd>
+
+        <dt>
+            Usuario
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EquipoComputo.TipoDeEquipo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Eliminar" class="btn btn-danger" />
+        @Html.ActionLink("Volver", "Index", "", new { @class = "btn btn-primary" })
+    </div>
+    }
+</div>

@@ -1,0 +1,30 @@
+﻿@model WebApplicationTI.Models.Usuario
+<script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
+
+@using (Html.BeginForm("Delete", "Usuarios", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <h3 class="modal-title">Eliminar este usuario</h3>
+    <hr />
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.IdUsuario)
+    <div class="modal-body">
+        @Html.LabelFor(model => model.Depto.Departamento, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.Depto.Departamento, new { @class = "form-control", @readonly = "readonly" })
+
+        @Html.LabelFor(model => model.Nombre, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", @readonly = "readonly" })
+
+        @Html.LabelFor(model => model.Correo, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.Correo, new { @class = "form-control", @readonly = "readonly" })
+
+        @Html.LabelFor(model => model.Ext, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.Ext, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+    </div>
+
+}

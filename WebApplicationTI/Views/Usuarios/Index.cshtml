@@ -1,0 +1,138 @@
+﻿@model PagedList.IPagedList<WebApplicationTI.Models.Usuario>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Usuarios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+
+<br />
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid">
+            <div>
+                <a class="btn btn-success" data-modal="" id="btnCreate" onclick="OpenAddModalUser()">
+                    <i class="fas fa-user-plus" title="Agregar usuario"></i>
+                </a>
+            </div>
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                @using (Html.BeginForm("ExportarExcel", "Usuarios", FormMethod.Post))
+                {
+                    <button type="submit" class="btn btn-success" title="Descargar EXCEL">
+                        <i class="fas fa-file-excel"></i>
+                    </button>
+                }
+                @using (Html.BeginForm("ExportarPdf", "Usuarios", FormMethod.Post))
+                {
+                    <button type="submit" class="btn btn-secondary" title="Descargar PDF">
+                        <i class="fas fa-file-pdf"></i>
+                    </button>
+                }
+            </div>
+
+            <p class="float-left">
+                @using (Html.BeginForm("Index", "Usuarios", FormMethod.Get))
+                {
+                    <div class="input-group">
+                        <input class="form-control" type="text" name="search" placeholder="Buscar por usuario..." />
+                        <button class="btn btn-success" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                    @Html.ActionLink("Ver todo", "Index")
+                }
+            </p>
+            <br />
+            <table class="table table-secondary  table-hover border-primary">
+                <thead class="table-dark">
+                    <tr>
+                        <th>
+                            Nombre
+                        </th>
+                        <th>
+                            Correo
+                        </th>
+                        <th>
+                            Extensión
+                        </th>
+                        <th>
+                            Departamento
+                        </th>
+                        <th class="text-center">Operaciones</th>
+                    </tr>
+                </thead>
+                @if (Model.Count() == 0)
+                {
+                    <tr>
+                        <td class="text-center" colspan="5">
+                            Registro no existe
+                        </td>
+                    </tr>}
+                else
+                {
+                    foreach (var item in Model)
+                    {
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Correo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Ext)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Depto.Departamento)
+                                </td>
+                                <td class="text-center">
+                                    <button type="button" onclick="OpenEditModalUser(@item.IdUsuario)" class="btn btn-primary btn-sm px-3" title="Editar">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button type="button" onclick="OpenDeleteModalUser(@item.IdUsuario)" class="btn btn-danger btn-sm px-3" title="Eliminar">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    }
+                }
+            </table>
+            <div class="text-center">
+                Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+            </div>
+            <br />
+        </div>
+    </main>
+</div>
+
+<!-- modal placeholders-->
+
+<div id="modal-edit" class="modal fade in">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div id='modal-edit-content'></div>
+        </div>
+    </div>
+</div>
+
+<div id="modal-add" class=" modal fade in">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div id='modal-add-content'></div>
+        </div>
+    </div>
+</div>
+
+<div id="modal-delete" class=" modal fade in">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div id='modal-delete-content'></div>
+        </div>
+    </div>
+</div>

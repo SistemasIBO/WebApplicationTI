@@ -1,0 +1,58 @@
+﻿@model WebApplicationTI.Models.Camaras
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <br />
+    <h4>Eliminar cámara</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Marca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Marca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modelo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modelo)
+        </dd>
+
+        <dt>
+            Ubicación
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ubicacion)
+        </dd>
+
+        <dt>
+            No. Serie
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoSerie)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <a href="@Url.Action("Index", "Camaras")" class="btn btn-outline-primary" title="Regresar">
+            <i class="fas fa-arrow-circle-left fa-2x"></i>
+        </a>
+        <button type="submit" class="btn btn-outline-danger" title="Eliminar">
+            <i class="fas fa-trash-alt fa-2x"></i>
+        </button>
+    </div>
+    }
+</div>

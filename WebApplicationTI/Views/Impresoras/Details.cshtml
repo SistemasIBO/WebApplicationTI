@@ -1,0 +1,90 @@
+﻿@model WebApplicationTI.Models.Impresoras
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <br />
+    <h4>Detalle de impresora</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo)
+        </dd>
+
+        <dt>
+            Marca
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Marcar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modelo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modelo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Arrendamiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Arrendamiento)
+        </dd>
+
+        <dt>
+            No. Puerto Ethernet
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PuertoEthetnet)
+        </dd>
+
+        <dt>
+            No. Puerto USB
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PuertoUSB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observaciones)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Depto.Departamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Depto.Departamento)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.IdEquipoImpresora }, new { @class = "btn btn-warning" })
+    @Html.ActionLink("Volver", "Index","",new { @class = "btn btn-primary" })
+</p>

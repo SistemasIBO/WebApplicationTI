@@ -1,0 +1,55 @@
+﻿@{ 
+    if(Session["IdCuenta"]== null)
+    {
+        Response.Redirect("~/Login");
+    }
+}
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid">
+            <h1 class="mt-4">Inventario TI</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Inventarios</li>
+            </ol>
+            <div class="row">
+                <div class="col-xl-6">
+                    <div class="card bg-secondary text-white mb-4">
+                        <div class="card-body">Equipos de computo <i class="fas fa-desktop float-right" ></i> </div>
+                        
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="~/EquiposComputo/Index">Ver detalle</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 ">
+                    <div class="card bg-info text-white mb-4">
+                        <div class="card-body">Impresoras <i class="fas fa-print float-right"></i></div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="~/Impresoras/Index">Ver detalle</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="card bg-warning text-white mb-4">
+                        <div class="card-body">Consumibles <i class="fas fa-clipboard-list float-right"></i></div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="~/Consumibles/Index">Ver detalle</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 ">
+                    <div class="card bg-success text-white mb-4">
+                        <div class="card-body">Herramientas <i class="fas fa-tools float-right"></i></div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="~/Herramientas/Index">Ver detalle</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

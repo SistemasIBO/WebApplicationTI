@@ -1,0 +1,97 @@
+﻿@model WebApplicationTI.Models.Impresoras
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+    <br />
+    <h4>Eliminar impresora</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo)
+        </dd>
+
+        <dt>
+            Marca
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Marcar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modelo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modelo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Arrendamiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Arrendamiento)
+        </dd>
+
+        <dt>
+            No. Puerto Ethernet
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PuertoEthetnet)
+        </dd>
+
+        <dt>
+            No. Puerto USB
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PuertoUSB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observaciones)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Depto.Departamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Depto.Departamento)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-danger" />
+            @Html.ActionLink("Volver", "Index", "", new { @class = "btn btn-primary" })
+        </div>
+    }
+</div>

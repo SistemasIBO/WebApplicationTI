@@ -1,0 +1,92 @@
+﻿@model IEnumerable<WebApplicationTI.Models.EquipoComputo>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid">
+            <p>
+                @Html.ActionLink("Agregar", "Create", "", new { @class = "btn btn-success" })
+            </p>
+
+            <table class="table table-secondary  table-hover border-primary">
+                <thead class="table-dark">
+                    <tr>
+                        <th>
+                            Tipo equipo
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Marca)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Modelo)
+                        </th>
+                        <th>
+                            No. Serie
+                        </th>
+                        <th>
+                            Disco duro
+                        </th>
+                        <th>
+                            Memoria RAM
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Estado)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Observaciones)
+                        </th>
+                        <th>
+                            Usuario
+                        </th>
+                        <th class="text-center">Operaciones</th>
+                    </tr>
+                </thead>
+
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TipoDeEquipo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Marca)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Modelo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NoSerie)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CapidadDiscoDuro)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MemoriaRAM)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Estado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Observaciones)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Usuario.Nombre)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Editar", "Edit", new { id = item.IdEquipoComputo }, new { @class = "btn btn-outline-primary" })
+                            @Html.ActionLink("Detalle", "Details", new { id = item.IdEquipoComputo }, new { @class = "btn btn-outline-info" })
+                            @Html.ActionLink("Eliminar", "Delete", new { id = item.IdEquipoComputo }, new { @class = "btn btn-outline-danger" })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </main>
+</div>
